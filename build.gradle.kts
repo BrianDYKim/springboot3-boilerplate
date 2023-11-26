@@ -17,7 +17,7 @@ plugins {
 }
 
 java {
-    sourceCompatibility = JavaVersion.VERSION_21
+    sourceCompatibility = JavaVersion.VERSION_17
 }
 
 allprojects {
@@ -33,17 +33,27 @@ allprojects {
     dependencies {
         // Kotlin Standard Library
         implementation("org.jetbrains.kotlin:kotlin-reflect")
-        implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
+        implementation("org.jetbrains.kotlin:kotlin-stdlib")
 
         // Jackson
         implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
         implementation("com.fasterxml.jackson.module:jackson-module-afterburner")
+
+        // Spring
+        implementation("org.springframework.boot:spring-boot-starter-web")
     }
 
     repositories {
         mavenCentral()
         maven("https://jitpack.io")
         maven("https://plugins.gradle.org/m2/")
+    }
+
+    tasks.withType<KotlinCompile> {
+        kotlinOptions {
+            freeCompilerArgs = listOf("-Xjsr305=strict")
+            jvmTarget = "17"
+        }
     }
 }
 
@@ -63,8 +73,8 @@ configure(subprojects.filter { it.name !in nonDependencyProjects }) {
         testImplementation("org.springframework.boot:spring-boot-starter-test")
 
         // JPA
-        implementation("org.springframework.boot:spring-boot-starter-data-jpa")
-        runtimeOnly("com.mysql:mysql-connector-j")
+//        implementation("org.springframework.boot:spring-boot-starter-data-jpa")
+//        runtimeOnly("com.mysql:mysql-connector-j")
 
         // Test
         testImplementation("io.mockk:mockk:$mockkVersion")
@@ -73,13 +83,6 @@ configure(subprojects.filter { it.name !in nonDependencyProjects }) {
         testImplementation("io.kotest:kotest-property:$kotestVersion") // for kotest property test
 
         kapt("org.springframework.boot:spring-boot-configuration-processor")
-    }
-
-    tasks.withType<KotlinCompile> {
-        kotlinOptions {
-            freeCompilerArgs = listOf("-Xjsr305=strict")
-            jvmTarget = "17"
-        }
     }
 
     tasks.withType<Test> {

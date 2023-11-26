@@ -1,0 +1,24 @@
+spring:
+  jackson:
+    time-zone: UTC
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/slackbot?useSSL=false&useUnicode=true&serverTimezone=UTC
+    username: slackbot
+    password: tutoringslack!
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: create
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    show-sql: true
+    properties:
+      hibernate.format_sql: true
+      dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+
+  logging:
+    level:
+      org.hibernate.SQL: debug
