@@ -1,4 +1,4 @@
-package team.me.common.annotations
+package team.me.common.annotations.hexagonal
 
 import org.springframework.core.annotation.AliasFor
 import org.springframework.stereotype.Component
@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component
 @Retention(AnnotationRetention.RUNTIME)
 @MustBeDocumented
 @Component
-annotation class PersistenceAdapter(
+annotation class WebAdapter(
     @get:AliasFor(annotation = Component::class)
     val value: String = "",
 )

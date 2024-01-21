@@ -1,4 +1,4 @@
-package team.me.common.annotations
+package team.me.common.annotations.hexagonal
 
 import org.springframework.core.annotation.AliasFor
 import org.springframework.stereotype.Component
