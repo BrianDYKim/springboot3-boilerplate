@@ -14,6 +14,9 @@ plugins {
     kotlin("plugin.jpa")
 
     kotlin("kapt")
+
+    // KLint
+    id("org.jlleitschuh.gradle.ktlint")
 }
 
 java {
@@ -29,6 +32,9 @@ allprojects {
 
     apply(plugin = "kotlin")
     apply(plugin = "kotlin-spring")
+
+    // KLint
+    apply(plugin = "org.jlleitschuh.gradle.ktlint")
 
     dependencies {
         // Kotlin Standard Library
@@ -59,6 +65,11 @@ allprojects {
             freeCompilerArgs = listOf("-Xjsr305=strict")
             jvmTarget = "17"
         }
+    }
+
+    // apply ktlint for debug
+    configure<org.jlleitschuh.gradle.ktlint.KtlintExtension> {
+        debug.set(true)
     }
 }
 

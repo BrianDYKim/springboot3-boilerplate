@@ -13,6 +13,4 @@ import javax.annotation.meta.TypeQualifierNickname
 @MustBeDocumented
 @Nonnull
 @TypeQualifierNickname
-annotation class BrianNonNull {
-
-}
+annotation class BrianNonNull

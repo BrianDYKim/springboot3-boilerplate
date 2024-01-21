@@ -14,5 +14,4 @@ import javax.annotation.meta.When
 @MustBeDocumented
 @Nonnull(`when` = When.MAYBE)
 @TypeQualifierNickname
-annotation class BrianNullable {
-}
+annotation class BrianNullable

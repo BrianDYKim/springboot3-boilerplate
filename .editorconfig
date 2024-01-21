@@ -1,0 +1,11 @@
+root = true
+
+[*]
+end_of_line=lf
+indent_size=4
+indent_style=space
+trim_trailing_whitespace=true
+
+[*.{kt,kts}]
+max_line_length=150
+insert_final_newline=true

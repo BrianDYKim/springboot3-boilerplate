@@ -20,9 +20,13 @@ class HibernatePropertiesValidator : EnvironmentPostProcessor {
             listOf(SPRING_JPA_HIBERNATE_DDL_AUTO_PROPERTY, SPRING_JPA_PROPERTIES_HIBERNATE_HBM2DDL_AUTO_PROPERTY)
     }
 
-    override fun postProcessEnvironment(environment: ConfigurableEnvironment, application: SpringApplication?) {
-        val isProdProfileActive = environment.activeProfiles.toList()
-            .contains(PRODUCTION_PROFILE_NAME)
+    override fun postProcessEnvironment(
+        environment: ConfigurableEnvironment,
+        application: SpringApplication?,
+    ) {
+        val isProdProfileActive =
+            environment.activeProfiles.toList()
+                .contains(PRODUCTION_PROFILE_NAME)
 
         if (isProdProfileActive) {
             validate(environment)

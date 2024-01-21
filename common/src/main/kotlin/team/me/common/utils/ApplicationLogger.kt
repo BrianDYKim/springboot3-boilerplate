@@ -8,11 +8,12 @@ import org.slf4j.LoggerFactory
  * @since 2023/11/26
  */
 abstract class ApplicationLogger(loggerName: String? = null) {
-    val log: Logger = loggerName?.let {
-        LoggerFactory.getLogger(it)
-    } ?: if (this::class.isCompanion) {
-        LoggerFactory.getLogger(this.javaClass.enclosingClass)
-    } else {
-        LoggerFactory.getLogger(this::class.java)
-    }
+    val log: Logger =
+        loggerName?.let {
+            LoggerFactory.getLogger(it)
+        } ?: if (this::class.isCompanion) {
+            LoggerFactory.getLogger(this.javaClass.enclosingClass)
+        } else {
+            LoggerFactory.getLogger(this::class.java)
+        }
 }

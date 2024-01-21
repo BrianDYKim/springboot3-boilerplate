@@ -5,6 +5,8 @@ pluginManagement {
     val springBootVersion = "3.2.0"
     val springDependencyManagementVersion = "1.1.4"
 
+    val kLintVersion = "12.0.2"
+
     plugins {
         id("org.springframework.boot") version springBootVersion
         id("io.spring.dependency-management") version springDependencyManagementVersion
@@ -15,6 +17,9 @@ pluginManagement {
         kotlin("plugin.jpa") version kotlinVersion
 
         kotlin("kapt") version kotlinVersion
+
+        // Kotlin Formatting
+        id("org.jlleitschuh.gradle.ktlint") version kLintVersion
     }
 }
 
