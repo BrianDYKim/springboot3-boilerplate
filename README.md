@@ -10,3 +10,9 @@
 ```shell
 ./gradlew ktlintFormat
 ```
+
+3. pre-commit phase 에서 lint 체킹
+```shell
+# 아래의 명령어를 통해 pre-commit phase ktlint check 추가
+./gradlew addKtlintCheckGitPreCommitHook
+```
