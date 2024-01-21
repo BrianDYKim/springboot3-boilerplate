@@ -43,6 +43,9 @@ allprojects {
         implementation("org.springframework.boot:spring-boot-starter-web")
         implementation("org.springframework.boot:spring-boot-starter-validation")
         implementation("jakarta.validation:jakarta.validation-api")
+
+        // Javax annotations
+        implementation("com.google.code.findbugs:jsr305:3.0.2")
     }
 
     repositories {
@@ -71,7 +74,6 @@ configure(subprojects.filter { it.name !in nonDependencyProjects }) {
 
     dependencies {
         // Spring
-        implementation("org.springframework.boot:spring-boot-starter-web")
         testImplementation("org.springframework.boot:spring-boot-starter-test")
 
         // JPA
