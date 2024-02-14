@@ -1,24 +1,28 @@
 package team.me.common.manager
 
-class AbstractManager<K, V>(private val defaultDriver: K, defaultDependency: V) {
+class AbstractManager<K, V> private constructor() {
     private val dependencyMap: MutableMap<K, V> = mutableMapOf()
 
-    init {
-        dependencyMap[defaultDriver] = defaultDependency
+    /**
+     * get the dependency from the manager
+     */
+    fun get(key: K): V? {
+        return dependencyMap[key]
     }
 
-    fun register(
-        key: K,
-        dependency: V,
-    ): AbstractManager<K, V> {
-        dependencyMap[key] = dependency
-        return this
-    }
+    class Builder<K, V> {
+        private val manager = AbstractManager<K, V>()
 
-    fun get(key: K): V {
-        return when (dependencyMap.contains(key)) {
-            true -> dependencyMap[key]!!
-            false -> dependencyMap[defaultDriver]!!
+        fun register(
+            key: K,
+            value: V,
+        ): Builder<K, V> {
+            manager.dependencyMap[key] = value
+            return this
+        }
+
+        fun build(): AbstractManager<K, V> {
+            return manager
         }
     }
 }
