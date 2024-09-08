@@ -1,9 +1,9 @@
 rootProject.name = "boilerplate"
 
 pluginManagement {
-    val kotlinVersion = "1.8.22"
-    val springBootVersion = "3.2.0"
-    val springDependencyManagementVersion = "1.1.4"
+    val kotlinVersion = "2.0.20"
+    val springBootVersion = "3.3.3"
+    val springDependencyManagementVersion = "1.1.5"
 
     val kLintVersion = "12.0.2"
 
@@ -25,5 +25,5 @@ pluginManagement {
 
 // modules
 include("common")
-include("core", "core:domain", "core:external")
+include("core", "core:domain")
 include("application", "application:admin-api", "application:api", "application:batch")
