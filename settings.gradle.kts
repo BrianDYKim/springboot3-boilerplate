@@ -23,7 +23,15 @@ pluginManagement {
     }
 }
 
-// modules
-include("common")
-include("core", "core:domain")
-include("application", "application:admin-api", "application:api", "application:batch")
+fun File.registerSubDirectoriesAsModule() {
+    this.listFiles()?.forEach { file ->
+        if (file.isDirectory) {
+            include("${this.name}:${file.name}")
+        }
+    }
+}
+
+// 모듈 등록
+listOf("presentation", "externals", "core", "commons")
+    .map { File(it) }
+    .map { it.registerSubDirectoriesAsModule() }
