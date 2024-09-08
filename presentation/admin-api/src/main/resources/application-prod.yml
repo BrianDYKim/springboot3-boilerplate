@@ -1,24 +1,33 @@
+appEnv: prod
+
 spring:
-  jackson:
-    time-zone: UTC
+    jackson:
+        time-zone: Asia/Seoul
 
-  datasource:
-    url: jdbc:mysql://localhost:3306/slackbot?useSSL=false&useUnicode=true&serverTimezone=UTC
-    username: slackbot
-    password: tutoringslack!
-    driver-class-name: com.mysql.cj.jdbc.Driver
+    # JPA
+    datasource:
+        main:
+            write:
+                url: jdbc:mysql://localhost:3306/spring_security?useSSL=false&useUnicode=true&serverTimezone=UTC
+                username: spring
+                password: springTest!
+            read:
+                url: jdbc:mysql://localhost:3306/spring_security?useSSL=false&useUnicode=true&serverTimezone=UTC
+                username: spring
+                password: springTest!
+            driver-class-name: com.mysql.cj.jdbc.Driver
 
-  jpa:
-    open-in-view: false
-    hibernate:
-      ddl-auto: create
-      naming:
-        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
-    show-sql: true
-    properties:
-      hibernate.format_sql: true
-      dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+    jpa:
+        open-in-view: false
+        hibernate:
+            ddl-auto: none
+            naming:
+                physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+        show-sql: true
+        properties:
+            hibernate.format_sql: true
+            dialect: org.hibernate.dialect.MySQL8Dialect
 
-  logging:
-    level:
-      org.hibernate.SQL: debug
+    logging:
+        level:
+            org.hibernate.SQL: debug
